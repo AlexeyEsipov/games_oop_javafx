@@ -25,12 +25,19 @@ public class Logic {
         int index = findBy(source);
         Cell[] steps = figures[index].way(source, dest);
         if (!isFree(steps)) {
-            throw new OccupiedCellException();
+            throw new OccupiedCellException("ячейка занята");
         }
         figures[index] = figures[index].copy(dest);
     }
 
-    private boolean isFree(Cell[] steps) {
+    private boolean isFree(Cell[] steps) throws OccupiedCellException {
+        for (Figure figure: figures) {
+            for (Cell stepWay: steps) {
+                if (figure.position().equals(stepWay)) {
+                    throw new OccupiedCellException("ячейка занята");
+                }
+            }
+        }
         return true;
     }
 
@@ -45,6 +52,6 @@ public class Logic {
                 return index;
             }
         }
-        throw new FigureNotFoundException();
+        throw new FigureNotFoundException("фигуры нет на клетке");
     }
 }
