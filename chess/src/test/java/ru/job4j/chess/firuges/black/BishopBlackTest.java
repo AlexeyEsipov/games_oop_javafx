@@ -12,7 +12,7 @@ public class BishopBlackTest {
     public void testPositionE4() {
         Cell expected = Cell.E4;
         BishopBlack bishopBlack = new BishopBlack(expected);
-        assertEquals(expected,bishopBlack.position());
+        assertEquals(expected, bishopBlack.position());
     }
 
     @Test
@@ -20,7 +20,7 @@ public class BishopBlackTest {
         Cell expected = Cell.E4;
         BishopBlack bishopBlack = new BishopBlack(Cell.A4);
         Figure copyBishopBlack = bishopBlack.copy(Cell.E4);
-        assertEquals(expected,copyBishopBlack.position());
+        assertEquals(expected, copyBishopBlack.position());
     }
 
     @Test
